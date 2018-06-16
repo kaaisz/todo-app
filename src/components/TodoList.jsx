@@ -3,19 +3,16 @@ export default class TodoList extends Component{
   render(){
 
     //todosを後ほどreduxから読み取る
+    const{ todos, clickTodo } = this.props;
 
-    const fakeTodos = [
-      {id:1, text:"buy a car", completed:false, todoClick:()=>console.log("clicked!")},
-      {id:2, text:"play the guitar", completed:true, todoClick:()=>console.log("clicked!")},
-      {id:3, text:"play with cat", completed:false, todoClick:()=>console.log("clicked!")}
-    ];
+    console.log(todos);
 
     return(
       <ul>
-        {fakeTodos.map(todo =>
+        {todos.map((todo, index) =>
           <li
-            key = {todo.id}
-            onClick = {todo.todoClick}
+            key = {index}
+            onClick = {() => clickTodo(index)}
             style = {{
               textDecoration: todo.completed ? 'line-through' : 'none'
             }}

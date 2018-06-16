@@ -7,7 +7,7 @@ export default class AddTodo extends Component{
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.inputValue);
+    this.props.addTodo(this.state.inputValue);
   }
 
   handleChange = (e) => {

@@ -7,8 +7,12 @@ export default class FooterMenu extends Component{
   //state - 自分自身を再描画する(更新する)ためにあるもの
 
   handleFilter = (filter) => {
+    const { clickFilter } = this.props;
     this.setState({
       activeFilter: filter,
+    },() => {
+      const { activeFilter } = this.state;
+      clickFilter(activeFilter)///???ここってどういう意味？
     });
     //hanlefilterでactiveFilterの状態を更新する(条件分岐する)
 

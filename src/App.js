@@ -21,6 +21,7 @@ class App extends Component {
         completed: false,
       },
     ],
+    activeFilter:'all',
   };
 
   todoClick = (id) => {
@@ -59,6 +60,28 @@ class App extends Component {
     });
   };
 
+  clickfilter  = (filter) => {
+    console.log(filter);
+
+    this.setState({
+      activeFilter: filter,
+    });
+  };
+
+  filterTodos = (todos) => {
+    const { activeFilter } = this.state;
+
+    if(activeFilter === 'active'){
+      return todos.filter(todo => !todo.completed);
+    }
+
+    if(activeFilter === 'completed'){
+      return todos.filter(todo => todo.completed);
+    }
+
+    return todos;
+  };
+
   render() {
 
     const { todos } = this.state;
@@ -66,8 +89,8 @@ class App extends Component {
     return (
       <div className="App">
         <AddTodo addTodo={this.addTodo} />
-        <TodoList todos={todos} clickTodo={this.todoClick} />
-        <FooterMenu />
+        <TodoList todos={this.filterTodos(todos)} clickTodo={this.todoClick} />
+        <FooterMenu clickFilter={this.clickFilter} />
       </div>
     );
   }

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getTodos } from '../actions/todos.js';
+import { getTodos, addTodos } from '../actions/todos.js';
+import TodoPage from '../components/TodoPage.jsx';
 
 class TodoContainer extends Component {
 
@@ -10,7 +11,7 @@ class TodoContainer extends Component {
   render() {
     return (
       <div>
-
+        <TodoPage />
       </div>
     )
   }
